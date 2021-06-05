@@ -65,10 +65,10 @@ jobs:
       - name: Restore packages
         run: nuget restore
 
-      - name: Build for Release
-        run: ./.github/scripts/android/build.ps1 -configuration Release
+      - name: Build for FDroid
+        run: ./.github/scripts/android/build.ps1 -configuration FDroid
         shell: pwsh
       
       - name: Get build name
-        run: dir ./src/Android/bin/Release
+        run: dir ./src/Android/bin/FDroid/
         shell: pwsh
