@@ -141,6 +141,7 @@ namespace Bit.Core.Services
 
         public async Task<bool> CanAccessPremiumAsync()
         {
+            return true;
             var authed = await IsAuthenticatedAsync();
             if (!authed)
             {
