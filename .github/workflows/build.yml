@@ -66,7 +66,7 @@ jobs:
         run: nuget restore
 
       - name: Build for FDroid
-        run: ./.github/scripts/android/build.ps1 -configuration FDroid
+        run: ./.github/scripts/android/build-unsigned.ps1 -configuration FDroid
         shell: pwsh
       
       - name: Get build name
