@@ -141,19 +141,7 @@ namespace Bit.Core.Services
 
         public async Task<bool> CanAccessPremiumAsync()
         {
-            var authed = await IsAuthenticatedAsync();
-            if (!authed)
-            {
-                return false;
-            }
-
-            var tokenPremium = _tokenService.GetPremium();
-            if (tokenPremium)
-            {
-                return true;
-            }
-            var orgs = await GetAllOrganizationAsync();
-            return orgs?.Any(o => o.UsersGetPremium && o.Enabled) ?? false;
+            return true;
         }
 
         public async Task<Organization> GetOrganizationAsync(string id)
