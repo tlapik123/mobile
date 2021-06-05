@@ -68,7 +68,17 @@ jobs:
       - name: Build for FDroid
         run: ./.github/scripts/android/build-unsigned.ps1 -configuration FDroid
         shell: pwsh
+        
+      - name: Upload unsigned .apk artifact
+        if: github.ref == 'refs/heads/master' || github.event_name == 'release'
+        uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700
+        with:
+          name: com.x8bit.bitwarden.apk
+          path: ./src/Android/bin/FDroid/com.x8bit.bitwarden.apk
       
-      - name: Get build name
-        run: dir ./src/Android/bin/FDroid/
-        shell: pwsh
+      - name: Upload signed .apk artifact
+        if: github.ref == 'refs/heads/master' || github.event_name == 'release'
+        uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700
+        with:
+          name: com.x8bit.bitwarden-Signed.apk
+          path: ./src/Android/bin/FDroid/com.x8bit.bitwarden-Signed.apk
