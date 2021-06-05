@@ -68,3 +68,10 @@ jobs:
       - name: Build for F-Droid
         run: ./.github/scripts/android/build.ps1 -configuration FDroid
         shell: pwsh
+      
+      - name: Upload F-Droid .apk artifact
+        if: github.ref == 'refs/heads/master' || github.event_name == 'release'
+        uses: actions/upload-artifact@ee69f02b3dfdecd58bb31b4d133da38ba6fe3700
+        with:
+          name: com.x8bit.bitwarden-fdroid.apk
+          path: ./com.x8bit.bitwarden-fdroid.apk
